@@ -1,5 +1,6 @@
 // index.ts
 import express, { Request, Response, NextFunction } from 'express';
+import {main} from "./mysql-test";
 
 const app = express();
 
@@ -14,3 +15,5 @@ app.listen('8001', () => {
         #############################################  
     `);
 })
+
+main();
