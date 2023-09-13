@@ -1,11 +1,20 @@
 // index.ts
-import express, { Request, Response, NextFunction } from 'express';
+import express, {Request, Response, NextFunction} from 'express';
 import {main} from "./mysql-test";
+import {redisMain} from "./redis-test";
 
 const app = express();
 
-app.get('/', (req: Request, res: Response, next: NextFunction) => {
-    res.send('Hi! This is my first express server');
+app.get('/mysql-test', (req: Request, res: Response, next: NextFunction) => {
+    //
+    main(1);
+    res.send('Test mysql test');
+});
+
+app.get('/redis-test', (req: Request, res: Response, next: NextFunction) => {
+    //
+    redisMain(1);
+    res.send('Test redis test');
 });
 
 app.listen('8001', () => {
@@ -14,6 +23,7 @@ app.listen('8001', () => {
         🛡️ Server listening on port: 8001 🛡️
         #############################################  
     `);
-})
+});
 
-main();
+// main(5);
+// redisMain(5);
